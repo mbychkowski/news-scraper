@@ -2,8 +2,6 @@ var express     = require ('express');
 var exprHbs     = require ('express-handlebars');
 var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose');
-var axios       = require('axios');
-var cheerio     = require('cheerio');
 
 var db = require('./models');
 
