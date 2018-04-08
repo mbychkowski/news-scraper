@@ -1,5 +1,5 @@
-var db      = require('../models');
-var axios   = require('axios');
+var db = require('../models');
+var axios = require('axios');
 var cheerio = require('cheerio');
 
 function scrapeHeadline() {
@@ -55,7 +55,7 @@ function scrapeHeadline() {
           .trim();
 
         // only store what has not been scrapped already.
-        db.Headline.create(result)
+        db.Headline.update(result, {$set: result}, {upsert: true})
           .then(data => {})
           .catch(err => {
             console.log(err);

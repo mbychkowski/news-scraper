@@ -20,8 +20,7 @@ var HeadlineSchema = new Schema({
   },
 
   duration: {
-    type: String,
-    required: true
+    type: String
   },
 
   date: {
