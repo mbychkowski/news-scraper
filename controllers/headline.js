@@ -54,6 +54,7 @@ function scrapeHeadline() {
           .replace(/.+?(?=\n)/, '') // Replace datetime of teaser with nothing.
           .trim();
 
+        // only store what has not been scrapped already.
         db.Headline.create(result)
           .then(data => {})
           .catch(err => {
