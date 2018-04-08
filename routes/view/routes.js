@@ -5,7 +5,7 @@ var scrapeHeadline  = require('../../controllers/headline.js').scrapeHeadline;
 module.exports = function(app) {
 
   app.get('/concerts', function(req, res) {
-    db.Headline.find({})
+    db.Headline.find({}).sort({ 'date': -1 })
       .then(data => {
         var hbsObject = {
           concerts: data,
