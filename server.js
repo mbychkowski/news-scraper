@@ -1,5 +1,5 @@
 var express     = require('express');
-var exprHbs     = require('express-handlebars');
+var exphbs     = require('express-handlebars');
 var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose');
 
@@ -11,14 +11,19 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main'
+}));
+
+app.set('view engine', 'handlebars');
+
+
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/tinydesk_db', {
-  useMongoClient: true
-});
+mongoose.connect('mongodb://localhost/tinydesk_db');
 
 // Routes
 require('./routes/api/routes.js')(app)
-
+require('./routes/view/routes.js')(app)
 
 // Start the server
 app.listen(PORT, function() {

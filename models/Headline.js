@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var HeadlineSchema = new Schema({
 
-  title: {
+  artist: {
     type: String,
     required: true
   },
@@ -20,6 +20,11 @@ var HeadlineSchema = new Schema({
   },
 
   duration: {
+    type: String,
+    required: true
+  },
+
+  date: {
     type: String,
     required: true
   },

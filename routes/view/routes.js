@@ -4,14 +4,14 @@ var scrapeHeadline  = require('../../controllers/headline.js').scrapeHeadline;
 
 module.exports = function(app) {
 
-  app.get('/scrape', function(req, res) {
-    scrapeHeadline();
-  });
-
-  app.get('/api/scrape', function(req, res) {
+  app.get('/concerts', function(req, res) {
     db.Headline.find({})
-    .then(data => res.json(data))
-    .catch(err => res.json(err));
+      .then(data => {
+        var hbsObject = {
+          concerts: data,
+        }
+        res.render("home", hbsObject);
+      });
   });
 
 }

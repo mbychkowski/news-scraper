@@ -12,7 +12,7 @@ function scrapeHeadline() {
 
         var result = {}
 
-        result.title = $(this)
+        result.artist = $(this)
           .children('.info')
           .children('.title')
           .children('a')
@@ -29,19 +29,30 @@ function scrapeHeadline() {
           .children('.imagewrap')
           .children('a')
           .children('img')
-          .attr('src').trim();
+          .attr('src')
+          .trim();
 
         result.duration = $(this)
           .children('.image')
           .children('.imagewrap')
           .children('a')
           .children('time')
-          .text().trim;
+          .text()
+          .trim();
+
+        result.date = $(this)
+          .children('.info')
+          .children('.teaser')
+          .children('time')
+          .attr('datetime')
+          .trim();
 
         result.teaser = $(this)
           .children('.info')
           .children('.teaser')
-          .text().trim();
+          .text()
+          .replace(/.+?(?=\n)/, '') // Replace datetime of teaser with nothing.
+          .trim();
 
         db.Headline.create(result)
           .then(data => {})
