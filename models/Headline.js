@@ -9,15 +9,30 @@ var HeadlineSchema = new Schema({
     required: true
   },
 
-  // link: {
-  //   type: String,
-  //   required: true
-  // },
-  //
-  // note: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Note"
-  // }
+  videoUrl: {
+    type: String,
+    required: true
+  },
+
+  imgUrl: {
+    type: String,
+    required: true
+  },
+
+  duration: {
+    type: String,
+    required: true
+  },
+
+  teaser: {
+    type: String,
+    required: true
+  },
+
+  note: {
+    type: Schema.Types.ObjectId,
+    ref: "Note"
+  }
 });
 
 var Headline = mongoose.model('Headline', HeadlineSchema);

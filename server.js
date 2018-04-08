@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/news_db', {
+mongoose.connect('mongodb://localhost/tinydesk_db', {
   useMongoClient: true
 });
 

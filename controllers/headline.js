@@ -4,35 +4,47 @@ var cheerio = require('cheerio');
 
 function scrapeHeadline() {
 
-  axios.get('https://www.npr.org/sections/news/')
+  axios.get('https://www.npr.org/series/tiny-desk-concerts/')
     .then(response => {
       var $ = cheerio.load(response.data);
 
-      $('article div.item-info').each(function(i, element) {
+      $('article').each(function(i, element) {
 
         var result = {}
 
         result.title = $(this)
+          .children('.info')
           .children('.title')
-          .text();
+          .children('a')
+          .text().trim();
 
-        // result.link = $(this)
-        //   .children('.title')
-        //   .children('a')
-        //   .attr('href');
-        //
-        // result.tag = $(this)
-        //   .children('.slug-wrap')
-        //   .children('a')
-        //   .text();
-        //
-        // result.teaser = $(this)
-        //   .children('.teaser')
-        //   .children('time')
-        //   .text();
+        result.videoUrl = $(this)
+          .children('.info')
+          .children('.title')
+          .children('a')
+          .attr('href').trim();
+
+        result.imgUrl = $(this)
+          .children('.image')
+          .children('.imagewrap')
+          .children('a')
+          .children('img')
+          .attr('src').trim();
+
+        result.duration = $(this)
+          .children('.image')
+          .children('.imagewrap')
+          .children('a')
+          .children('time')
+          .text().trim;
+
+        result.teaser = $(this)
+          .children('.info')
+          .children('.teaser')
+          .text().trim();
 
         db.Headline.create(result)
-          .then(articleData => {})
+          .then(data => {})
           .catch(err => {
             console.log(err);
 
