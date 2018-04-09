@@ -3,7 +3,7 @@ var exphbs      = require('express-handlebars');
 var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose');
 
-var PORT = 3000;
+var port = process.env.PORT || 3000;
 
 var app = express();
 
@@ -29,6 +29,6 @@ require('./routes/api/routes.js')(app)
 require('./routes/view/routes.js')(app)
 
 // Start the server
-app.listen(PORT, function() {
-  console.log("App running on port " + PORT + "!");
+app.listen(port, function() {
+  console.log("App running on port " + port + "!");
 });
