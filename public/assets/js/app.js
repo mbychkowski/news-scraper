@@ -10,30 +10,29 @@ $(document).on('click', '#comment', function() {
     url: '/' + thisId
   }).then(data => {
 
-    console.log(data);
-
     $('.note-content').append('<h4>Notes on ' + data.artist + '</h4>');
 
-    $('.note-content').append('<input id="title-input" name="title" value="New note">');
+    $('.note-content').append('<input id="title-input" name="title">');
 
-    $('.note-content').append('<textarea id="body-input" name="body">Thoughts on this artist</textarea>');
+    $('.note-content').append('<textarea id="body-input" name="body"></textarea>');
 
-    $('.save-note').attr('data-id="' + data._id + '"');
+    $('.save-note').attr('data-id', data._id);
 
     // If there's a note in the headline already
-    if (data.note) {
+    if (data.comment) {
 
-      $('#title-input').append('<h5>' + data.note.title + '</h5>');
+      $('#title-input').val(data.comment.title);
 
-      $('#body-input').val(data.note.body);
+      $('#body-input').val(data.comment.body);
     }
   });
 
 });
 
-$(document).on('click', '#save-note', function() {
+$(document).on('click', '.save-note', function() {
 
   var thisId = $(this).attr('data-id');
+  console.log($('#body-input').val());
 
   $.ajax({
     method: 'POST',
@@ -43,12 +42,5 @@ $(document).on('click', '#save-note', function() {
       title: $('#title-input').val(),
       body: $('#body-input').val()
     }
-  })
-    .then(function(data) {
-      $('#notes').empty();
-    });
-
-  $('#titleinput').val('');
-  $('#bodyinput').val('');
-
+  });
 });

@@ -1,8 +1,8 @@
 // Require all models
 var db              = require('../../models');
 var scrapeHeadline  = require('../../controllers/headline.js').scrapeHeadline;
-var getComments     = require('../../controllers/comment.js').getComments;
-var postComment     = require('../../controllers/comment.js').postComment;
+var getNotes        = require('../../controllers/note.js').getNotes;
+var postNote        = require('../../controllers/note.js').postNote;
 
 module.exports = function(app) {
 
@@ -25,7 +25,7 @@ module.exports = function(app) {
 
     var id = req.params.id;
     console.log('id: ' + id);
-    getComments(id, res)
+    getNotes(id, res)
 
   });
 
@@ -34,7 +34,7 @@ module.exports = function(app) {
 
     var body = req.body;
     var id = req.params.id;
-    postComment(body, id, res)
+    postNote(body, id, res)
 
   });
 

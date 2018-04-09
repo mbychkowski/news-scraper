@@ -33,9 +33,9 @@ var Schema = new Schema({
     required: true
   },
 
-  comment: {
+  note: {
     type: Schema.Types.ObjectId,
-    ref: 'Comment'
+    ref: 'Note'
   }
 });
 
