@@ -59,8 +59,6 @@ function scrapeHeadline() {
           .then(data => {})
           .catch(err => {
             console.log(err);
-
-            return res.json(err);
           });
 
       });

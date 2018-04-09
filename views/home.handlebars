@@ -1,5 +1,6 @@
-<nav>
-  <div class="nav-wrapper blue-grey darken-1">
+<nav class="blue-grey darken-1 ">
+  <div class="nav-wrapper container">
+    <button id="scrape-btn" class="btn waves-effect waves-light deep-orange accent-1">scrape</button>
     <a href="#" class="brand-logo right">NPR tiny desk scrapper</a>
   </div>
 </nav>
@@ -14,21 +15,30 @@
           <div class="card-stacked">
             <div class="card-content">
               <h5 class="header">{{this.artist}}</h2>
-              <p>{{this.teaser}}</p>
-            </div>
-            <div class="card-action">
-              <a href="{{this.videoUrl}}">watch</a>
-              <a href="#">Comment</a>
+                  <p>{{this.teaser}}</p>
+                </div>
+                <div class="card-action">
+                  <a href="{{this.videoUrl}}">watch</a>
+                  <a id="comment" data-id="{{this._id}}" class="modal-trigger" href="#modal1">Comment</a>
+                </div>
+              </div>
+              <div class="card-image">
+                <img src="{{this.imgUrl}}">
+              </div>
             </div>
           </div>
-          <div class="card-image">
-            <img src="{{this.imgUrl}}">
-          </div>
-        </div>
-      </div>
-
 
     {{/each}}
 
+  </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal bottom-sheet">
+  <div class="modal-content note-content">
+
+  </div>
+  <div class="modal-footer note-submit" >
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat save-note">Save Note</a>
   </div>
 </div>

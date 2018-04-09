@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var HeadlineSchema = new Schema({
+var Schema = new Schema({
 
   artist: {
     type: String,
@@ -33,13 +33,13 @@ var HeadlineSchema = new Schema({
     required: true
   },
 
-  note: {
+  comment: {
     type: Schema.Types.ObjectId,
-    ref: "Note"
+    ref: 'Comment'
   }
 });
 
-var Headline = mongoose.model('Headline', HeadlineSchema);
+var Headline = mongoose.model('Headline', Schema);
 
 // Export the Article model
 module.exports = Headline;
