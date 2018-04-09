@@ -20,7 +20,7 @@ app.set('view engine', 'handlebars');
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/tinydesk_db";
 
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/tinydesk_db', {
+mongoose.connect(MONGODB_URI, {
   useMongoClient: true
 });
 
