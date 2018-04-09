@@ -44,3 +44,12 @@ $(document).on('click', '.save-note', function() {
     }
   });
 });
+
+$(document).on('click', '#scrape-btn', function() {
+
+  $.ajax({
+    method: 'GET',
+    url: '/scrape'
+  });
+
+});
