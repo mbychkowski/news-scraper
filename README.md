@@ -4,6 +4,8 @@ Tiny desk scraper, scrapes and archives the latest episodes from NPRs series [Ti
 ## How to use
 To use, press the scrape button and refresh the page for the latest episodes to appear. Click on `Watch` link to be taken to NPRs site to view the video.
 
+![screenshot](https://github.com/mbychkowski/tiny-desk-scraper/blob/master/public/assets/imgs/screenshot-home.png?raw=true)
+
 ## Built with
 * [cheerio](https://www.npmjs.com/package/cheerio)
 * [express](https://expressjs.com/)
